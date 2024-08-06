@@ -54,6 +54,6 @@ export const Small: Story = {
 export const Example: Story = {
   args: {
     primary: false,
-    label: "Button"
-  }
+    label: 'Button',
+  },
 };
