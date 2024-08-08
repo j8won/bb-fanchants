@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
+    "dev": "i18nexus pull && next dev",
+    "build": "i18nexus pull && next build",
+    "start": "i18nexus pull && next start",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
@@ -13,9 +13,14 @@
     "format:check": "prettier --check ."
   },
   "dependencies": {
+    "i18next": "^23.12.2",
+    "i18next-resources-to-backend": "^1.2.1",
     "next": "14.2.5",
+    "next-i18n-router": "^5.5.1",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-i18next": "^15.0.1",
+    "webpack": "^5.0.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^1.6.1",
@@ -40,6 +45,7 @@
     "eslint-plugin-react": "^7.35.0",
     "eslint-plugin-react-hooks": "^4.6.2",
     "eslint-plugin-storybook": "^0.8.0",
+    "i18nexus-cli": "^3.5.0",
     "postcss": "^8",
     "prettier": "^3.3.3",
     "storybook": "^8.2.7",
