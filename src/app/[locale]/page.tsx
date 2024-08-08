@@ -17,7 +17,9 @@ export default async function Home({ params: { locale } }) {
         <h1>{t('greeting')}</h1>
         <ExampleClientComponent />
         <LanguageChanger />
-        <Link href="/about-us">{t('common:about_us')}</Link>
+        <Link className="text-blue-600" href="/about-us">
+          {t('common:about_us')}
+        </Link>
       </div>
     </TranslationsProvider>
   );

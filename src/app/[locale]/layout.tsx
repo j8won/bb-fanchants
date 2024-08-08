@@ -23,7 +23,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang={locale} dir={dir(locale)}>
-      <body className={inter.className}>{children}</body>
+      <body className="bg-gray6-black bg-custom-gradient overflow-hidden">
+        {children}
+      </body>
     </html>
   );
 }
