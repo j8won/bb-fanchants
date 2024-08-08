@@ -20,8 +20,4 @@
   h2 {
     @apply text-heading-2 text-gray2-title font-medium;
   }
-
-  body {
-    @apply text-body-lg text-gray3-text font-normal;
-  }
 }
