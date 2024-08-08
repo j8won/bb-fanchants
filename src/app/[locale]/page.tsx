@@ -5,7 +5,13 @@ import ExampleClientComponent from '@/components/ExampleClientComponent';
 import LanguageChanger from '@/components/LanguageChanger';
 
 const i18nNamespaces = ['home', 'common'];
-export default async function Home({ params: { locale } }) {
+interface Params {
+  params: {
+    locale: string;
+  };
+}
+
+export default async function Home({ params: { locale } }: Params) {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
   return (
     <TranslationsProvider

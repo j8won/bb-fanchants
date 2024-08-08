@@ -17,6 +17,7 @@ export default function RootLayout({
   params: { locale },
 }: Readonly<{
   children: React.ReactNode;
+  params: { locale: string };
 }>) {
   return (
     <html lang={locale} dir={dir(locale)}>
