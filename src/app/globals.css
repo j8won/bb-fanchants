@@ -3,26 +3,25 @@
 @tailwind utilities;
 
 @layer base {
-    html {
-        @apply h-screen w-screen;
-    }
+  html {
+    @apply h-screen w-screen;
+  }
 
-    body {
-        @apply font-sans text-gray3-text font-normal;
-        margin: 0;
-        padding: 0;
-    }
+  body {
+    @apply font-sans text-gray3-text font-normal;
+    margin: 0;
+    padding: 0;
+  }
 
-    h1 {
-        @apply text-heading-1 text-gray2-title font-medium;
+  h1 {
+    @apply text-heading-1 text-gray2-title font-medium;
+  }
 
-    }
+  h2 {
+    @apply text-heading-2 text-gray2-title font-medium;
+  }
 
-    h2 {
-        @apply text-heading-2 text-gray2-title font-medium;
-    }
-
-    body {
-        @apply text-body-lg text-gray3-text font-normal;
-    }
+  body {
+    @apply text-body-lg text-gray3-text font-normal;
+  }
 }
