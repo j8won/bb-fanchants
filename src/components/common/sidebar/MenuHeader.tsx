@@ -11,7 +11,7 @@ export default function MenuHeader({ closeMenu }: { closeMenu: () => void }) {
         <LanguageChanger />
         <button onClick={closeMenu}>
           <Image
-            src={'/images/icons8-close.svg'}
+            src={'/icons/icons8-close.svg'}
             alt={'close'}
             width={28}
             height={28}

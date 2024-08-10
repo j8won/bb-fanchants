@@ -8,7 +8,7 @@ export default function Header({ openMenu }: { openMenu: () => void }) {
       <header className="w-full p-5 flex justify-between items-center">
         <Link href="/">
           <Image
-            src="/images/logo.svg"
+            src="/icons/logo.svg"
             alt="home"
             layout="fixed"
             width={150}
@@ -20,7 +20,7 @@ export default function Header({ openMenu }: { openMenu: () => void }) {
             layout="fixed"
             width={28}
             height={28}
-            src="/images/icons8-menu.svg"
+            src="/icons/icons8-menu.svg"
             alt="menu"
           />
         </button>
