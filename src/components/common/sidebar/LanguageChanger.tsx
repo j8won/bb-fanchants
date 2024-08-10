@@ -2,7 +2,7 @@
 
 import { useTranslation } from 'react-i18next';
 import { usePathname, useRouter } from 'next/navigation';
-import { i18nConfig } from '@/i18nConfig';
+import { i18nConfig } from '@/i18n/i18nConfig';
 import React from 'react';
 import LOCALE from '@/constants/LOCALE';
 
