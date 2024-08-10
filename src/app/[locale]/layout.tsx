@@ -36,7 +36,7 @@ export default async function RootLayout({
   children: React.ReactNode;
   params: { locale: string };
 }>) {
-  const i18nNamespaces = [];
+  const i18nNamespaces = ['home'];
   const { resources } = await initTranslations(locale, i18nNamespaces);
   return (
     <html lang={locale} dir={dir(locale)}>
