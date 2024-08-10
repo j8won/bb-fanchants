@@ -18,7 +18,6 @@ describe('Header', () => {
   const openMenuMock = jest.fn();
 
   beforeEach(() => {
-    // eslint-disable-next-line testing-library/no-render-in-lifecycle
     render(<Header openMenu={openMenuMock} />);
   });
 
