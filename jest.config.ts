@@ -19,6 +19,7 @@ const config: Config = {
     '^@/(.*)$': '<rootDir>/src/$1',
   },
   moduleFileExtensions: ['js', 'jsx', 'ts', 'tsx'],
+  roots: ['<rootDir>/src'],
 };
 
 export default createJestConfig(config);

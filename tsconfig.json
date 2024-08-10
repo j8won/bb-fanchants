@@ -20,7 +20,8 @@
     "paths": {
       "@/*": ["./src/*"],
       "@locales/*": ["./locales/*"]
-    }
+    },
+    "types": ["jest", "node"]
   },
   "include": [
     "next-env.d.ts",
