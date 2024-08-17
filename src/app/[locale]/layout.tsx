@@ -49,8 +49,9 @@ export default async function RootLayout({
           >
             <SideBar />
           </TranslationsProvider>
-
-          {children}
+          <div className="absolute top-0 pt-[68px] w-full h-full">
+            {children}
+          </div>
         </ConditionalStyledBackground>
       </body>
     </html>

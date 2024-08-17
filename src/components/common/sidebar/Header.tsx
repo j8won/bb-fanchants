@@ -5,19 +5,18 @@ import Link from 'next/link';
 export default function Header({ openMenu }: { openMenu: () => void }) {
   return (
     <>
-      <header className="w-full p-5 flex justify-between items-center">
+      <header className="relative z-10 w-full p-5 flex justify-between items-center">
         <Link href="/">
           <Image
             src="/icons/logo.svg"
             alt="home"
-            layout="fixed"
             width={150}
             height={30}
+            style={{ height: 'auto' }}
           />
         </Link>
         <button onClick={openMenu}>
           <Image
-            layout="fixed"
             width={28}
             height={28}
             src="/icons/icons8-menu.svg"
