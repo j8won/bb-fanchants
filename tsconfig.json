@@ -29,7 +29,9 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     ".storybook/**/*.{ts,tsx}",
-    "src/**/*.{ts,tsx}"
+    "src/**/*.{ts,tsx}",
+    "**/*.stories.{ts,tsx}",
+    "**/*.test.{ts,tsx}"
   ],
   "exclude": ["node_modules", "tailwind.config.ts"]
 }
