@@ -1,5 +1,5 @@
 import { Meta, StoryObj } from '@storybook/react';
-import ConditionalStyledBackground from '@/components/common/ConditionalStyledBackground';
+import ConditionalStyledBackground from '@/components/common/background/ConditionalStyledBackground';
 
 const meta: Meta<typeof ConditionalStyledBackground> = {
   title: 'Common/ConditionalStyledBackground',

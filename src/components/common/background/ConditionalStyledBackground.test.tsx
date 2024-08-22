@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
-import ConditionalStyledBackground from '@/components/common/ConditionalStyledBackground';
+import ConditionalStyledBackground from '@/components/common/background/ConditionalStyledBackground';
 import { usePathname } from 'next/navigation';
 
 jest.mock('next/navigation', () => ({

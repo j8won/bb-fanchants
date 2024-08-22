@@ -6,7 +6,7 @@ import { i18nConfig } from '@/i18n/i18nConfig';
 import initTranslations from '@/i18n/i18n';
 import TranslationsProvider from '@/components/i18n/TranslationsProvider';
 import SideBar from '@/components/common/sidebar/SideBar';
-import ConditionalStyledBackground from '@/components/common/ConditionalStyledBackground';
+import ConditionalStyledBackground from '@/components/common/background/ConditionalStyledBackground';
 import LOCALE from '@/constants/LOCALE';
 
 const metadata = LOCALE.METADATA;
