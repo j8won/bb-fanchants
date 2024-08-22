@@ -20,4 +20,72 @@
   h2 {
     @apply text-heading-2 text-gray2-title font-medium;
   }
+
+  @keyframes twinkling {
+    0% {
+      opacity: 0.5;
+
+      box-shadow: 0 0 10px 0px rgb(255, 255, 255, 0.05);
+    }
+    50% {
+      opacity: 0.5;
+
+      box-shadow: 0 0 10px 2px rgb(255, 255, 255, 0.2);
+    }
+    100% {
+      opacity: 0.5;
+
+      box-shadow: 0 0 10px 0px rgb(255, 255, 255, 0.05);
+    }
+  }
+
+  @keyframes twinklingWithNoBoxShadow {
+    0% {
+      background-color: #fde100;
+      opacity: 0.5;
+      box-shadow: 0 0 20px 0 rgba(253, 225, 0, 0.5);
+    }
+    20% {
+      background-color: #ffc4c4;
+      opacity: 0.5;
+
+      box-shadow: 0 0 20px 0 rgba(255, 196, 196, 0.5);
+    }
+    40% {
+      background-color: #c4cfff;
+      opacity: 0.5;
+
+      box-shadow: 0 0 20px 0 rgba(196, 207, 255, 0.5);
+    }
+    80% {
+      background-color: #fff599;
+      opacity: 0.5;
+
+      box-shadow: 0 0 20px 0 rgba(255, 245, 153, 0.5);
+    }
+    100% {
+      background-color: #fde100;
+      opacity: 0.5;
+
+      box-shadow: 0 0 20px 0 rgba(253, 225, 0, 0.5);
+    }
+  }
+
+
+  .twinkle1 {
+    animation: twinkling 0.5s infinite alternate;
+  }
+
+  .twinkle2 {
+    animation: twinkling 1s infinite alternate;
+  }
+
+  .twinkle3 {
+    animation: twinkling 1.5s infinite alternate;
+  }
+
+  .twinkle4 {
+    animation: twinklingWithNoBoxShadow 2s infinite alternate;
+  }
+
 }
