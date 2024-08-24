@@ -1,6 +1,7 @@
 import React from 'react';
 import initTranslations from '@/i18n/i18n';
 import TranslationsProvider from '@/components/i18n/TranslationsProvider';
+import MenuButton from '@/components/home/MenuButton';
 
 interface Params {
   params: {
@@ -22,9 +23,7 @@ export default async function Home({ params: { locale } }: Params) {
         <h2 className="break-keep text-xl font-light text-gray3-text">
           {t('explain')}
         </h2>
-        <button className="mt-16 rounded-full border-2 px-6 py-3 text-xl font-normal">
-          {t('menu-button')}
-        </button>
+        <MenuButton>{t('menu-button')}</MenuButton>
       </div>
     </TranslationsProvider>
   );

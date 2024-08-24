@@ -8,6 +8,7 @@ import TranslationsProvider from '@/components/i18n/TranslationsProvider';
 import SideBar from '@/components/common/sidebar/SideBar';
 import ConditionalStyledBackground from '@/components/common/background/ConditionalStyledBackground';
 import LOCALE from '@/constants/LOCALE';
+import { Provider } from 'jotai';
 
 const metadata = LOCALE.METADATA;
 export async function generateMetadata({
@@ -41,18 +42,20 @@ export default async function RootLayout({
   return (
     <html lang={locale} dir={dir(locale)}>
       <body className="w-screen min-h-screen overflow-x-hidden bg-gray6-black flex justify-center items-center">
-        <ConditionalStyledBackground>
-          <TranslationsProvider
-            locale={locale}
-            namespaces={i18nNamespaces}
-            resources={resources}
-          >
-            <SideBar />
-          </TranslationsProvider>
-          <div className="absolute z-10 top-0 pt-[68px] w-full h-full">
-            {children}
-          </div>
-        </ConditionalStyledBackground>
+        <Provider>
+          <ConditionalStyledBackground>
+            <TranslationsProvider
+              locale={locale}
+              namespaces={i18nNamespaces}
+              resources={resources}
+            >
+              <SideBar />
+            </TranslationsProvider>
+            <div className="absolute z-10 top-0 pt-[68px] w-full h-full">
+              {children}
+            </div>
+          </ConditionalStyledBackground>
+        </Provider>
       </body>
     </html>
   );

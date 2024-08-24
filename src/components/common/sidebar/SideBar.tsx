@@ -1,22 +1,13 @@
 'use client';
-import React, { useState } from 'react';
+import React from 'react';
 import Header from '@/components/common/sidebar/Header';
 import MenuHeader from '@/components/common/sidebar/MenuHeader';
 import Link from 'next/link';
 import { useTranslation } from 'react-i18next';
+import useMenuOpen from '@/hooks/useMenuOpen';
 
 export default function SideBar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const openMenu = () => {
-    if (isMenuOpen) return;
-    setIsMenuOpen(true);
-  };
-
-  const closeMenu = () => {
-    if (!isMenuOpen) return;
-    setIsMenuOpen(false);
-  };
+  const { isMenuOpen, openMenu, closeMenu } = useMenuOpen();
 
   const { t } = useTranslation('common');
 
