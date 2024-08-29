@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { getRandomValue } from '@/utils/random';
 
 const STYLES = ['w-[4px] h-[4px]', 'w-[5px] h-[5px]', 'w-[6px] h-[6px]'];
@@ -31,4 +32,4 @@ function CreateStars({ i, windowSize }: CreateStarsProps) {
   );
 }
 
-export default CreateStars;
+export default memo(CreateStars);

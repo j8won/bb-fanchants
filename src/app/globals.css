@@ -71,7 +71,6 @@
     }
   }
 
-
   .twinkle1 {
     animation: twinkling 0.5s infinite alternate;
   }
@@ -87,5 +86,4 @@
   .twinkle4 {
     animation: twinklingWithNoBoxShadow 2s infinite alternate;
   }
-
 }
