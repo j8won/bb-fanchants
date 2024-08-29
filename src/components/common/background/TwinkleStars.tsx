@@ -1,7 +1,7 @@
 import CreateStars from '@/components/common/background/CreateStars';
 import { useEffect, useState } from 'react';
 
-function TwinkleStars() {
+function TwinkleStars({ numbersOfStars = 100 }: { numbersOfStars?: number }) {
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
@@ -21,7 +21,7 @@ function TwinkleStars() {
 
   return (
     <div className="relative top-0 w-full h-full">
-      {Array.from({ length: 100 }, (_, i) => (
+      {Array.from({ length: numbersOfStars }, (_, i) => (
         <CreateStars key={i} i={i} windowSize={windowSize} />
       ))}
     </div>
