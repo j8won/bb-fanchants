@@ -16,7 +16,7 @@ const INFOS: LocalesType = {
     buttonText: '🇺🇸 ENG',
     path: '/en',
   },
-};
+} as const;
 
 type MetadataType = {
   applicationName: string;
@@ -40,9 +40,6 @@ const METADATA: MetadataAllType = {
     description:
       'Enjoy the BIGBANG concert with fanchants | English is now available.',
   },
-};
-
-Object.freeze(INFOS);
-Object.freeze(METADATA);
+} as const;
 
 export default { INFOS, METADATA };
