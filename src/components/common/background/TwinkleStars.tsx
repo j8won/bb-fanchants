@@ -3,8 +3,8 @@ import { useEffect, useState } from 'react';
 
 function TwinkleStars({ numbersOfStars = 100 }: { numbersOfStars?: number }) {
   const [windowSize, setWindowSize] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight,
+    width: 1920,
+    height: 1080,
   });
 
   useEffect(() => {
@@ -16,6 +16,8 @@ function TwinkleStars({ numbersOfStars = 100 }: { numbersOfStars?: number }) {
     };
 
     window.addEventListener('resize', handleResize);
+    handleResize();
+
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
