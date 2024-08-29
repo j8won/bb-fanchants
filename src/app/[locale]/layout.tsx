@@ -9,6 +9,7 @@ import SideBar from '@/components/common/sidebar/SideBar';
 import ConditionalStyledBackground from '@/components/common/background/ConditionalStyledBackground';
 import LOCALE from '../../../lib/constants/LOCALE';
 import { Provider } from 'jotai';
+import { getAllSongsWithSinger } from '../../../lib/utils/mdx';
 
 const metadata = LOCALE.METADATA;
 export async function generateMetadata({
@@ -39,6 +40,9 @@ export default async function RootLayout({
 }>) {
   const i18nNamespaces = ['home'];
   const { resources } = await initTranslations(locale, i18nNamespaces);
+
+  const songsList = await getAllSongsWithSinger(locale);
+
   return (
     <html lang={locale} dir={dir(locale)}>
       <body className="w-screen min-h-screen overflow-x-hidden bg-gray6-black flex justify-center items-center">
@@ -49,7 +53,7 @@ export default async function RootLayout({
               namespaces={i18nNamespaces}
               resources={resources}
             >
-              <SideBar />
+              <SideBar songsBySingerList={songsList} />
             </TranslationsProvider>
             <div className="absolute z-10 top-0 pt-[68px] w-full h-full">
               {children}
