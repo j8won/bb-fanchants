@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { usePathname, useRouter } from 'next/navigation';
 import { fireEvent, render, screen } from '@testing-library/react';
 import LanguageChanger from '@/components/common/sidebar/LanguageChanger';
-import LOCALE from '@/constants/LOCALE';
+import LOCALE from '../../../../lib/constants/LOCALE';
 
 jest.mock('react-i18next', () => ({
   useTranslation: jest.fn(),
