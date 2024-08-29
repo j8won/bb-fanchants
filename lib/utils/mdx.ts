@@ -48,21 +48,25 @@ export const getAllSongsWithSinger = async (
   const localePath = songsDirectory[locale];
   const files = sync(`${localePath}/**/*.mdx`);
 
-  files.forEach((file) => {
-    const singerKey = path.basename(path.dirname(file)) as keyof typeof SINGERS;
-    const singer = SINGERS[singerKey] || singerKey;
+  await Promise.all(
+    files.map(async (file) => {
+      const singerKey = path.basename(
+        path.dirname(file)
+      ) as keyof typeof SINGERS;
+      const singer = SINGERS[singerKey] || singerKey;
 
-    const metadata = getSongMetadata(file);
-    const title = metadata.title || path.basename(file, '.mdx');
+      const metadata = getSongMetadata(file);
+      const title = metadata.title || path.basename(file, '.mdx');
 
-    const postPath = getSongSlug(file, localePath);
+      const postPath = getSongSlug(file, localePath);
 
-    if (!singersMap[singer]) {
-      singersMap[singer] = [];
-    }
+      if (!singersMap[singer]) {
+        singersMap[singer] = [];
+      }
 
-    singersMap[singer].push({ title, slug: postPath });
-  });
+      singersMap[singer].push({ title, slug: postPath });
+    })
+  );
 
   for (const [singer, songs] of Object.entries(singersMap)) {
     result.push(<SongsBySinger>{ singer, songs });
