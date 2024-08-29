@@ -20,8 +20,18 @@
     "paths": {
       "@/*": ["./src/*"],
       "@locales/*": ["./locales/*"]
-    }
+    },
+    "types": ["jest", "node"]
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".storybook/**/*.{ts,tsx}",
+    "src/**/*.{ts,tsx}",
+    "**/*.stories.{ts,tsx}",
+    "**/*.test.{ts,tsx}"
+  ],
+  "exclude": ["node_modules", "tailwind.config.ts"]
 }

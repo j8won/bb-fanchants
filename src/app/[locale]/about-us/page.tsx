@@ -1,4 +1,4 @@
-import initTranslations from '@/i18n';
+import initTranslations from '@/i18n/i18n';
 
 interface Params {
   params: { locale: string };
