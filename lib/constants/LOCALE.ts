@@ -3,6 +3,8 @@ export enum LOCALE {
   en = 'en',
 }
 
+export type LocaleType = keyof typeof LOCALE;
+
 export const INFOS = {
   ko: {
     buttonText: '🇰🇷 KOR',
