@@ -14,7 +14,7 @@ export default async function Page({ params: { slug, locale } }: Params) {
 
   console.log(metadata);
   return (
-    <div>
+    <div className="overflow-y-auto">
       {slug} {locale}
       <Markdown source={mdxSource} />
     </div>
