@@ -5,6 +5,8 @@ import matter from 'gray-matter';
 import { SingerType, SongsBySinger, SongType } from '../../types/song';
 import { LOCALE } from '../constants/LOCALE';
 import { SINGERS } from '../constants/SONGS';
+import { serialize } from 'next-mdx-remote/serialize';
+import remarkGfm from 'remark-gfm';
 
 const SUPPORTED_LOCALES = Object.keys(LOCALE);
 const BASE_PATH = '_songs';
@@ -17,19 +19,52 @@ const songsDirectory = SUPPORTED_LOCALES.reduce(
   {} as Record<string, string>
 );
 
-const getSongMetadata = (filePath: string) => {
+const getSongRawSourceByFilePath = (filePath: string) => {
   try {
-    const fileContents = fs.readFileSync(filePath, 'utf8');
+    return fs.readFileSync(filePath, 'utf8');
+  } catch (e) {
+    throw new Error(`Error reading file ${filePath}: ${e.message}`);
+  }
+};
+
+const getSongMetadataByFilePath = (filePath: string) => {
+  try {
+    const fileContents = getSongRawSourceByFilePath(filePath);
     const { data } = matter(fileContents);
     return data;
   } catch (e) {
-    console.log(`Error reading or parsing file ${filePath}: `, e);
-    return {};
+    throw new Error(`Error  parsing file ${filePath} metadata: ${e.message}`);
+  }
+};
+
+const getSongMdxByFilePath = async (filePath: string) => {
+  try {
+    const fileContents = getSongRawSourceByFilePath(filePath);
+    const { data: metadata, content } = matter(fileContents);
+
+    const mdxSource = await serialize(content, {
+      mdxOptions: {
+        remarkPlugins: [remarkGfm],
+        format: 'mdx',
+      },
+    });
+
+    return { metadata, mdxSource };
+  } catch (e) {
+    throw new Error(`Error parsing file ${filePath} source: ${e.message}`);
   }
 };
 
 const getSongSlug = (filePath: string, localePath: string) => {
-  return filePath.replace(localePath, '').replace(/\.mdx$/, '');
+  const withoutLocalePath = filePath.replace(localePath, '');
+  const singer = path.basename(path.dirname(withoutLocalePath));
+  const fileName = path.basename(withoutLocalePath, '.mdx');
+  return `/${singer}-${fileName}`;
+};
+
+const getFilePath = (locale: string, slug: string) => {
+  const [singer, filename] = slug.replace('/', '').split('-');
+  return path.join(process.cwd(), BASE_PATH, locale, singer, `${filename}.mdx`);
 };
 
 export const getAllSongsWithSinger = async (
@@ -55,7 +90,7 @@ export const getAllSongsWithSinger = async (
       ) as keyof typeof SINGERS;
       const singer = SINGERS[singerKey] || singerKey;
 
-      const metadata = getSongMetadata(file);
+      const metadata = getSongMetadataByFilePath(file);
       const title = metadata.title || path.basename(file, '.mdx');
 
       const postPath = getSongSlug(file, localePath);
@@ -73,4 +108,9 @@ export const getAllSongsWithSinger = async (
   }
 
   return result;
+};
+
+export const getSongBySlug = async (locale: string, slug: string) => {
+  const filePath = getFilePath(locale, slug);
+  return getSongMdxByFilePath(filePath);
 };
