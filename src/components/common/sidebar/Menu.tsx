@@ -22,11 +22,11 @@ export default function Menu({ songsBySingerList, closeMenu }: Params) {
           ))}
         </div>
       ))}
-      <Link href="/about-us" onClick={closeMenu}>
-        <p className="px-5 pb-8 text-caption-lg text-gray4-dark-text underline">
-          ABOUT US
-        </p>
-      </Link>
+      {/*<Link href="/about-us" onClick={closeMenu}>*/}
+      {/*  <p className="px-5 pb-8 text-caption-lg text-gray4-dark-text underline">*/}
+      {/*    ABOUT US*/}
+      {/*  </p>*/}
+      {/*</Link>*/}
     </div>
   );
 }
