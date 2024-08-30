@@ -1,7 +1,8 @@
 import initTranslations from '@/i18n/i18n';
+import { LocaleType } from '../../../../lib/constants/LOCALE';
 
 interface Params {
-  params: { locale: string };
+  params: { locale: LocaleType };
 }
 
 export default async function AboutUs({ params: { locale } }: Params) {

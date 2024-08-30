@@ -1,13 +1,11 @@
-type LocaleInfo = {
-  buttonText: string;
-  path: string;
-};
+export enum LOCALE {
+  ko = 'ko',
+  en = 'en',
+}
 
-type LocalesType = {
-  [key: string]: LocaleInfo;
-};
+export type LocaleType = keyof typeof LOCALE;
 
-const INFOS: LocalesType = {
+export const INFOS = {
   ko: {
     buttonText: '🇰🇷 KOR',
     path: '/',
@@ -18,17 +16,7 @@ const INFOS: LocalesType = {
   },
 } as const;
 
-type MetadataType = {
-  applicationName: string;
-  title: string;
-  description: string;
-};
-
-type MetadataAllType = {
-  [key in keyof typeof INFOS]: MetadataType;
-};
-
-const METADATA: MetadataAllType = {
+export const METADATA = {
   ko: {
     applicationName: '빅뱅 응원법',
     title: '빅뱅 응원법',
@@ -41,5 +29,3 @@ const METADATA: MetadataAllType = {
       'Enjoy the BIGBANG concert with fanchants | English is now available.',
   },
 } as const;
-
-export default { INFOS, METADATA };

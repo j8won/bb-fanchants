@@ -1,23 +1,29 @@
 import type { Metadata } from 'next';
 import React from 'react';
 import { dir } from 'i18next';
+import { Provider } from 'jotai';
+
 import '../globals.css';
 import { i18nConfig } from '@/i18n/i18nConfig';
 import initTranslations from '@/i18n/i18n';
 import TranslationsProvider from '@/components/i18n/TranslationsProvider';
 import SideBar from '@/components/common/sidebar/SideBar';
 import ConditionalStyledBackground from '@/components/common/background/ConditionalStyledBackground';
-import LOCALE from '../../../lib/constants/LOCALE';
-import { Provider } from 'jotai';
+import { LocaleType, METADATA } from '../../../lib/constants/LOCALE';
 import { getAllSongsWithSinger } from '../../../lib/utils/mdx';
 
-const metadata = LOCALE.METADATA;
+const metadata = METADATA;
+
+interface Params {
+  locale: LocaleType;
+}
+
 export async function generateMetadata({
   params,
 }: {
-  params: { locale: string };
+  params: Params;
 }): Promise<Metadata> {
-  const locale = params.locale as keyof typeof LOCALE.INFOS;
+  const locale = params.locale;
   return {
     applicationName:
       metadata[locale]?.applicationName || metadata['en'].applicationName,
@@ -36,7 +42,7 @@ export default async function RootLayout({
   params: { locale },
 }: Readonly<{
   children: React.ReactNode;
-  params: { locale: string };
+  params: Params;
 }>) {
   const i18nNamespaces = ['home'];
   const { resources } = await initTranslations(locale, i18nNamespaces);
