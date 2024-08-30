@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { usePathname, useRouter } from 'next/navigation';
 import { i18nConfig } from '@/i18n/i18nConfig';
 import React from 'react';
-import { INFOS, LocaleType } from '../../../../lib/constants/LOCALE';
+import { INFOS, LocaleType } from '@/lib/constants/LOCALE';
 
 const localeInfo = Object.entries(INFOS).map(([id, info]) => {
   return { id: id, text: info.buttonText };

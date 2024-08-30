@@ -1,6 +1,6 @@
 'use client';
 import { memo, useEffect, useState } from 'react';
-import { getRandomValue } from '../../../../lib/utils/random';
+import { getRandomValue } from '@/lib/utils/random';
 
 const STYLES = ['w-[4px] h-[4px]', 'w-[5px] h-[5px]', 'w-[6px] h-[6px]'];
 const OPACITIES = ['opacity-100', 'opacity-50', 'opacity-10'];

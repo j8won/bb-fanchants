@@ -9,8 +9,8 @@ import initTranslations from '@/i18n/i18n';
 import TranslationsProvider from '@/components/i18n/TranslationsProvider';
 import SideBar from '@/components/common/sidebar/SideBar';
 import ConditionalStyledBackground from '@/components/common/background/ConditionalStyledBackground';
-import { LocaleType, METADATA } from '../../../lib/constants/LOCALE';
-import { getAllSongsWithSinger } from '../../../lib/utils/mdx';
+import { LocaleType, METADATA } from '@/lib/constants/LOCALE';
+import { getAllSongsWithSinger } from '@/lib/utils/mdx';
 
 const metadata = METADATA;
 

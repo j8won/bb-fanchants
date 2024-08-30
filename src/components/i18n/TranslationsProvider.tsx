@@ -4,7 +4,7 @@ import { I18nextProvider } from 'react-i18next';
 import initTranslations from '@/i18n/i18n';
 import { createInstance, Resource } from 'i18next';
 import { ReactNode } from 'react';
-import { LocaleType } from '../../../lib/constants/LOCALE';
+import { LocaleType } from '@/lib/constants/LOCALE';
 
 interface TranslationsProviderProps {
   children: ReactNode;
