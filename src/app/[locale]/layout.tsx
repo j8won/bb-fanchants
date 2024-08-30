@@ -30,6 +30,13 @@ export async function generateMetadata({
     title: metadata[locale]?.title || metadata['en'].title,
     keywords: '빅뱅 응원법 bigbang BIGBANG fanchants',
     description: metadata[locale]?.description || metadata['en'].description,
+    openGraph: {
+      title: '빅뱅 응원법 | BIGBANG fanchants',
+      images: '/og-image.png',
+      description:
+        'Enjoy the BIGBANG concert with fanchants | English is now available.',
+      url: 'https://bb-fanchants.vercel.app',
+    },
   };
 }
 
@@ -51,7 +58,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={dir(locale)}>
-      <body className="w-screen min-h-screen overflow-x-hidden bg-gray6-black flex justify-center items-center">
+      <body className="w-screen min-h-screen md:webkit-fill-available overflow-x-hidden bg-gray6-black flex justify-center items-center">
         <Provider>
           <ConditionalStyledBackground>
             <TranslationsProvider
