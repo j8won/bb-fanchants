@@ -2,11 +2,11 @@ import path from 'path';
 import fs from 'fs';
 import { sync } from 'glob';
 import matter from 'gray-matter';
-import { SingerType, SongsBySinger, SongType } from '../../types/songs';
-import LOCALE from '../constants/LOCALE';
+import { SingerType, SongsBySinger, SongType } from '../../types/song';
+import { LOCALE } from '../constants/LOCALE';
 import { SINGERS } from '../constants/SONGS';
 
-const SUPPORTED_LOCALES = Object.keys(LOCALE.INFOS);
+const SUPPORTED_LOCALES = Object.keys(LOCALE);
 const BASE_PATH = '_songs';
 
 const songsDirectory = SUPPORTED_LOCALES.reduce(

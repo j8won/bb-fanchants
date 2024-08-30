@@ -1,10 +1,10 @@
 'use client';
 import { usePathname } from 'next/navigation';
 import React from 'react';
-import LOCALE from '../../../../lib/constants/LOCALE';
+import { INFOS } from '../../../../lib/constants/LOCALE';
 import TwinkleStars from '@/components/common/background/TwinkleStars';
 
-const paths = Object.keys(LOCALE.INFOS).map((key) => LOCALE.INFOS[key]['path']);
+const paths = Object.keys(INFOS).map((key) => INFOS[key]['path']);
 
 export default function ConditionalStyledBackground({
   children,

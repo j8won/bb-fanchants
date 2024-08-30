@@ -7,17 +7,17 @@ import initTranslations from '@/i18n/i18n';
 import TranslationsProvider from '@/components/i18n/TranslationsProvider';
 import SideBar from '@/components/common/sidebar/SideBar';
 import ConditionalStyledBackground from '@/components/common/background/ConditionalStyledBackground';
-import LOCALE from '../../../lib/constants/LOCALE';
+import { INFOS, METADATA } from '../../../lib/constants/LOCALE';
 import { Provider } from 'jotai';
 import { getAllSongsWithSinger } from '../../../lib/utils/mdx';
 
-const metadata = LOCALE.METADATA;
+const metadata = METADATA;
 export async function generateMetadata({
   params,
 }: {
   params: { locale: string };
 }): Promise<Metadata> {
-  const locale = params.locale as keyof typeof LOCALE.INFOS;
+  const locale = params.locale as keyof typeof INFOS;
   return {
     applicationName:
       metadata[locale]?.applicationName || metadata['en'].applicationName,
