@@ -1,11 +1,15 @@
 'use client';
 import Image from 'next/image';
 import Link from 'next/link';
+import useIsRoot from '@/hooks/useIsRoot';
 
 export default function Header({ openMenu }: { openMenu: () => void }) {
+  const { isRoot } = useIsRoot();
   return (
     <>
-      <header className="relative z-20 w-full p-5 flex justify-between items-center">
+      <header
+        className={`relative z-20 w-full p-5 flex justify-between items-center ${!isRoot && 'bg-gray6-black'}`}
+      >
         <Link href="/">
           <Image
             src="/icons/logo.svg"

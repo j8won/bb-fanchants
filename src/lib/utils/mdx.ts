@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import { sync } from 'glob';
 import matter from 'gray-matter';
-import { SingerType, SongsBySinger, SongType } from '../../types/song';
+import { SingerType, SongsBySinger, SongWithSlug } from '../../../types/song';
 import { LOCALE, LocaleType } from '../constants/LOCALE';
 import { SINGERS } from '../constants/SONGS';
 import { serialize } from 'next-mdx-remote/serialize';
@@ -46,6 +46,7 @@ const getSongMdxByFilePath = async (filePath: string) => {
     const fileContents = getSongRawSourceByFilePath(filePath);
     const { data: metadata, content } = matter(fileContents);
 
+    // const { serialize } = await import('next-mdx-remote/serialize');
     const mdxSource = await serialize(content, {
       mdxOptions: {
         remarkPlugins: [remarkGfm],
@@ -77,14 +78,14 @@ export const getAllSongsWithSinger = async (
   locale: LocaleType
 ): Promise<SongsBySinger[]> => {
   const result: SongsBySinger[] = [];
-  const singersMap: Record<SingerType, SongType[]> = Object.keys(
+  const singersMap: Record<SingerType, SongWithSlug[]> = Object.keys(
     SINGERS
   ).reduce(
     (acc, key) => {
       acc[SINGERS[key as keyof typeof SINGERS]] = [];
       return acc;
     },
-    {} as Record<SingerType, SongType[]>
+    {} as Record<SingerType, SongWithSlug[]>
   );
   const localePath = songsDirectory[locale];
   const files = sync(`${localePath}/**/*.mdx`);

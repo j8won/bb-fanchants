@@ -2,7 +2,7 @@ import { useTranslation } from 'react-i18next';
 import { usePathname, useRouter } from 'next/navigation';
 import { fireEvent, render, screen } from '@testing-library/react';
 import LanguageChanger from '@/components/common/sidebar/LanguageChanger';
-import LOCALE from '../../../../lib/constants/LOCALE';
+import { INFOS } from '@/lib/constants/LOCALE';
 
 jest.mock('react-i18next', () => ({
   useTranslation: jest.fn(),
@@ -41,7 +41,7 @@ describe('Language Changer Button', () => {
   it('renders KOR and ENG buttons correctly', () => {
     render(<LanguageChanger />);
 
-    Object.entries(LOCALE.INFOS).forEach(([id, info]) => {
+    Object.entries(INFOS).forEach(([id, info]) => {
       const button = screen.getByText(info.buttonText);
       expect(button).toBeInTheDocument();
 
@@ -57,7 +57,7 @@ describe('Language Changer Button', () => {
     render(<LanguageChanger />);
     const { push, refresh } = mockUseRouter.mock.results[0].value;
 
-    const engButton = screen.getByText(LOCALE.INFOS.en.buttonText);
+    const engButton = screen.getByText(INFOS.en.buttonText);
     fireEvent.click(engButton);
 
     expect(document.cookie).toContain('NEXT_LOCALE=en');
@@ -69,7 +69,7 @@ describe('Language Changer Button', () => {
     render(<LanguageChanger />);
     const { push, refresh } = mockUseRouter.mock.results[0].value;
 
-    const korButton = screen.getByText(LOCALE.INFOS.ko.buttonText);
+    const korButton = screen.getByText(INFOS.ko.buttonText);
     fireEvent.click(korButton);
 
     expect(push).not.toHaveBeenCalled();

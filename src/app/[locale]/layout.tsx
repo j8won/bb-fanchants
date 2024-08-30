@@ -9,8 +9,8 @@ import initTranslations from '@/i18n/i18n';
 import TranslationsProvider from '@/components/i18n/TranslationsProvider';
 import SideBar from '@/components/common/sidebar/SideBar';
 import ConditionalStyledBackground from '@/components/common/background/ConditionalStyledBackground';
-import { LocaleType, METADATA } from '../../../lib/constants/LOCALE';
-import { getAllSongsWithSinger } from '../../../lib/utils/mdx';
+import { LocaleType, METADATA } from '@/lib/constants/LOCALE';
+import { getAllSongsWithSinger } from '@/lib/utils/mdx';
 
 const metadata = METADATA;
 
@@ -61,7 +61,7 @@ export default async function RootLayout({
             >
               <SideBar songsBySingerList={songsList} />
             </TranslationsProvider>
-            <div className="absolute z-10 top-0 pt-[68px] w-full h-full">
+            <div className="absolute z-10 top-0 pt-[68px] w-full min-h-full max-h-[calc(100%-68px)] overflow-y-auto">
               {children}
             </div>
           </ConditionalStyledBackground>
