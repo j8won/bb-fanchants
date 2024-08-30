@@ -13,7 +13,7 @@ pnpm dev
 title: 'Shoong!'
 date: 2023-04-25
 artist: '태양'
-imageUrl: '/songs/taeyang/shoong.png'
+imageUrl: '/songs/taeyang/downToEarth.png'
 musicUrl: 'https://www.youtube.com/watch?v=NFnAuiklEug'
 ---
 ```
