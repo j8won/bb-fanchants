@@ -15,10 +15,7 @@ function TwinkleStars({ numbersOfStars = 100 }: { numbersOfStars?: number }) {
       });
     };
 
-    window.addEventListener('resize', handleResize);
     handleResize();
-
-    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   return (
