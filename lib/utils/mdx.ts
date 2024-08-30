@@ -3,7 +3,7 @@ import fs from 'fs';
 import { sync } from 'glob';
 import matter from 'gray-matter';
 import { SingerType, SongsBySinger, SongType } from '../../types/song';
-import { LOCALE } from '../constants/LOCALE';
+import { LOCALE, LocaleType } from '../constants/LOCALE';
 import { SINGERS } from '../constants/SONGS';
 import { serialize } from 'next-mdx-remote/serialize';
 import remarkGfm from 'remark-gfm';
@@ -23,7 +23,9 @@ const getSongRawSourceByFilePath = (filePath: string) => {
   try {
     return fs.readFileSync(filePath, 'utf8');
   } catch (e) {
-    throw new Error(`Error reading file ${filePath}: ${e.message}`);
+    throw new Error(
+      `Error reading file ${filePath}: ${e instanceof Error ? e.message : 'unknown error'}`
+    );
   }
 };
 
@@ -33,7 +35,9 @@ const getSongMetadataByFilePath = (filePath: string) => {
     const { data } = matter(fileContents);
     return data;
   } catch (e) {
-    throw new Error(`Error  parsing file ${filePath} metadata: ${e.message}`);
+    throw new Error(
+      `Error  parsing file ${filePath} metadata: ${e instanceof Error ? e.message : 'unknown error'}`
+    );
   }
 };
 
@@ -51,7 +55,9 @@ const getSongMdxByFilePath = async (filePath: string) => {
 
     return { metadata, mdxSource };
   } catch (e) {
-    throw new Error(`Error parsing file ${filePath} source: ${e.message}`);
+    throw new Error(
+      `Error parsing file ${filePath} source: ${e instanceof Error ? e.message : 'unknown error'}`
+    );
   }
 };
 
@@ -62,13 +68,13 @@ const getSongSlug = (filePath: string, localePath: string) => {
   return `/${singer}-${fileName}`;
 };
 
-const getFilePath = (locale: typeof LOCALE, slug: string) => {
+const getFilePath = (locale: LocaleType, slug: string) => {
   const [singer, filename] = slug.replace('/', '').split('-');
   return path.join(process.cwd(), BASE_PATH, locale, singer, `${filename}.mdx`);
 };
 
 export const getAllSongsWithSinger = async (
-  locale: typeof LOCALE
+  locale: LocaleType
 ): Promise<SongsBySinger[]> => {
   const result: SongsBySinger[] = [];
   const singersMap: Record<SingerType, SongType[]> = Object.keys(
@@ -110,7 +116,7 @@ export const getAllSongsWithSinger = async (
   return result;
 };
 
-export const getSongBySlug = async (locale: typeof LOCALE, slug: string) => {
+export const getSongBySlug = async (locale: LocaleType, slug: string) => {
   const filePath = getFilePath(locale, slug);
   return getSongMdxByFilePath(filePath);
 };

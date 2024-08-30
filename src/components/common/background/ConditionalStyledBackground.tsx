@@ -4,7 +4,7 @@ import React from 'react';
 import { INFOS } from '../../../../lib/constants/LOCALE';
 import TwinkleStars from '@/components/common/background/TwinkleStars';
 
-const paths = Object.keys(INFOS).map((key) => INFOS[key]['path']);
+const paths = Object.values(INFOS).map((info) => info.path);
 
 export default function ConditionalStyledBackground({
   children,
@@ -12,7 +12,7 @@ export default function ConditionalStyledBackground({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  const isRoot = paths.includes(pathname);
+  const isRoot = (paths as string[]).includes(pathname);
 
   return (
     <div
