@@ -62,13 +62,13 @@ const getSongSlug = (filePath: string, localePath: string) => {
   return `/${singer}-${fileName}`;
 };
 
-const getFilePath = (locale: string, slug: string) => {
+const getFilePath = (locale: typeof LOCALE, slug: string) => {
   const [singer, filename] = slug.replace('/', '').split('-');
   return path.join(process.cwd(), BASE_PATH, locale, singer, `${filename}.mdx`);
 };
 
 export const getAllSongsWithSinger = async (
-  locale: string
+  locale: typeof LOCALE
 ): Promise<SongsBySinger[]> => {
   const result: SongsBySinger[] = [];
   const singersMap: Record<SingerType, SongType[]> = Object.keys(
@@ -110,7 +110,7 @@ export const getAllSongsWithSinger = async (
   return result;
 };
 
-export const getSongBySlug = async (locale: string, slug: string) => {
+export const getSongBySlug = async (locale: typeof LOCALE, slug: string) => {
   const filePath = getFilePath(locale, slug);
   return getSongMdxByFilePath(filePath);
 };

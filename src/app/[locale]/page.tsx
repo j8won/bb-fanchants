@@ -2,10 +2,11 @@ import React from 'react';
 import initTranslations from '@/i18n/i18n';
 import TranslationsProvider from '@/components/i18n/TranslationsProvider';
 import MenuButton from '@/components/home/MenuButton';
+import { LocaleType } from '../../../lib/constants/LOCALE';
 
 interface Params {
   params: {
-    locale: string;
+    locale: LocaleType;
   };
 }
 

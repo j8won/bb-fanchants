@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { usePathname, useRouter } from 'next/navigation';
 import { i18nConfig } from '@/i18n/i18nConfig';
 import React from 'react';
-import { INFOS } from '../../../../lib/constants/LOCALE';
+import { INFOS, LocaleType } from '../../../../lib/constants/LOCALE';
 
 const localeInfo = Object.entries(INFOS).map(([id, info]) => {
   return { id: id, text: info.buttonText };
@@ -16,7 +16,7 @@ export default function LanguageChanger() {
   const currentPathname = usePathname();
   const currentLocale = i18n.language;
 
-  const handleChange = (newLocale: string) => {
+  const handleChange = (newLocale: LocaleType) => {
     const days = 30;
     const date = new Date();
     date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
@@ -38,7 +38,7 @@ export default function LanguageChanger() {
       {localeInfo.map((locale) => (
         <button
           key={locale.id}
-          onClick={() => handleChange(locale.id)}
+          onClick={() => handleChange(locale.id as LocaleType)}
           disabled={currentLocale === locale.id}
           className={`px-3 py-1.5 rounded disabled:bg-gray5-light-bg`}
         >
