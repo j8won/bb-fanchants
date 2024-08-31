@@ -19,7 +19,7 @@ export default async function Home({ params: { locale } }: Params) {
       locale={locale}
       namespaces={i18nNamespaces}
     >
-      <div className="px-4 mt-20 flex flex-col justify-center items-center">
+      <div className="px-4 pt-[68px] mt-28 flex flex-col justify-center items-center">
         <h1 className="break-keep mb-8 text-gray2-title">{t('greeting')}</h1>
         <h2 className="break-keep text-xl font-light text-gray3-text">
           {t('explain')}
