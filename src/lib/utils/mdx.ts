@@ -2,7 +2,7 @@ import path from 'path';
 import fs from 'fs';
 import { sync } from 'glob';
 import matter from 'gray-matter';
-import { SingerType, SongsBySinger, SongWithSlug } from '../../../types/song';
+import { SingerType, SongsBySinger, SongType } from '../../../types/song';
 import { LOCALE, LocaleType } from '../constants/LOCALE';
 import { SINGERS } from '../constants/SONGS';
 import { serialize } from 'next-mdx-remote/serialize';
@@ -46,7 +46,6 @@ const getSongMdxByFilePath = async (filePath: string) => {
     const fileContents = getSongRawSourceByFilePath(filePath);
     const { data: metadata, content } = matter(fileContents);
 
-    // const { serialize } = await import('next-mdx-remote/serialize');
     const mdxSource = await serialize(content, {
       mdxOptions: {
         remarkPlugins: [remarkGfm],
@@ -78,15 +77,18 @@ export const getAllSongsWithSinger = async (
   locale: LocaleType
 ): Promise<SongsBySinger[]> => {
   const result: SongsBySinger[] = [];
-  const singersMap: Record<SingerType, SongWithSlug[]> = Object.keys(
-    SINGERS
-  ).reduce(
+
+  const singersMap: Record<
+    SingerType,
+    Pick<SongType, 'title' | 'slug' | 'date'>[]
+  > = Object.keys(SINGERS).reduce(
     (acc, key) => {
       acc[SINGERS[key as keyof typeof SINGERS]] = [];
       return acc;
     },
-    {} as Record<SingerType, SongWithSlug[]>
+    {} as Record<SingerType, Pick<SongType, 'title' | 'slug' | 'date'>[]>
   );
+
   const localePath = songsDirectory[locale];
   const files = sync(`${localePath}/**/*.mdx`);
 
@@ -99,6 +101,7 @@ export const getAllSongsWithSinger = async (
 
       const metadata = getSongMetadataByFilePath(file);
       const title = metadata.title || path.basename(file, '.mdx');
+      const date = metadata.date;
 
       const postPath = getSongSlug(file, localePath);
 
@@ -106,15 +109,18 @@ export const getAllSongsWithSinger = async (
         singersMap[singer] = [];
       }
 
-      singersMap[singer].push({ title, slug: postPath });
+      singersMap[singer].push({ title, slug: postPath, date });
     })
   );
 
   for (const [singer, songs] of Object.entries(singersMap)) {
-    result.push(<SongsBySinger>{ singer, songs });
+    const sortedSongs = songs
+      .sort((a, b) => (a.date > b.date ? -1 : 1))
+      .map((x) => ({ title: x.title, slug: x.slug }));
+    result.push(<SongsBySinger>{ singer, songs: sortedSongs });
   }
 
-  return result;
+  return result.sort((a, b) => a.singer.localeCompare(b.singer));
 };
 
 export const getSongBySlug = async (locale: LocaleType, slug: string) => {

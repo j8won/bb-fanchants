@@ -1,4 +1,4 @@
-import { SongsBySinger, SongType } from '../../../../types/song';
+import { SongsBySinger, SongWithSlug } from '../../../../types/song';
 import Link from 'next/link';
 import React from 'react';
 
@@ -15,7 +15,7 @@ export default function Menu({ songsBySingerList, closeMenu }: Params) {
           <p className="py-2 text-body-lg font-light text-gray4-dark-text">
             {singer}
           </p>
-          {songs.map(({ title, slug }: Pick<SongType, 'title' | 'slug'>) => (
+          {songs.map(({ title, slug }: SongWithSlug) => (
             <Link href={slug} key={title} onClick={closeMenu}>
               <p className="py-2 text-body-lg">{title}</p>
             </Link>

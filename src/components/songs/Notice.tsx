@@ -17,9 +17,9 @@ export default function Notice({ locale }: Params) {
   if (locale === 'en') {
     return (
       <>
-        For the <span className="text-primary-yellow">yellow</span>, please
-        follow the melody and for the{' '}
-        <span className="text-secondary-skyblue">blue</span>, shout out only the
+        For the <span className="text-primary-yellow">yellow</span>, sing along
+        with the melody. For the{' '}
+        <span className="text-secondary-skyblue">blue</span>, shout only the
         fanchants!
       </>
     );
