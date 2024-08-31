@@ -7,7 +7,7 @@ import Image from 'next/image';
 export default function MenuHeader({ closeMenu }: { closeMenu: () => void }) {
   return (
     <>
-      <header className="w-full px-5 py-4 flex justify-between items-center">
+      <header className="fixed z-10 w-full px-5 py-4 flex justify-between items-center bg-gray6-black">
         <LanguageChanger />
         <button onClick={closeMenu}>
           <Image
