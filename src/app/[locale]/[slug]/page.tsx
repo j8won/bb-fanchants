@@ -31,7 +31,7 @@ export default async function Page({ params: { slug, locale } }: Params) {
             height="60"
             src="https://img.icons8.com/ios-filled/60/ffffff/play-button-circled--v1.png"
             alt="play-button-circled--v1"
-            className="opacity-75 absolute top-[50px] left-[50px]"
+            className="opacity-75 absolute top-[calc(50%-30px)] left-[calc(50%-30px)]"
           />
         </Link>
 
