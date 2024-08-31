@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import React from 'react';
 import { dir } from 'i18next';
 import { Provider } from 'jotai';
+import { Analytics } from '@vercel/analytics/next';
 
 import '../globals.css';
 import { i18nConfig } from '@/i18n/i18nConfig';
@@ -57,23 +58,26 @@ export default async function RootLayout({
   const songsList = await getAllSongsWithSinger(locale);
 
   return (
-    <html lang={locale} dir={dir(locale)}>
-      <body className="w-screen min-h-screen md:webkit-fill-available overflow-x-hidden overflow-y-hidden bg-gray6-black flex justify-center items-center">
-        <Provider>
-          <ConditionalStyledBackground>
-            <TranslationsProvider
-              locale={locale}
-              namespaces={i18nNamespaces}
-              resources={resources}
-            >
-              <SideBar songsBySingerList={songsList} />
-            </TranslationsProvider>
-            <div className="absolute z-10 top-0  w-full min-h-full max-h-[calc(100%-68px)] overflow-y-auto">
-              {children}
-            </div>
-          </ConditionalStyledBackground>
-        </Provider>
-      </body>
-    </html>
+    <>
+      <html lang={locale} dir={dir(locale)}>
+        <body className="w-screen min-h-screen md:webkit-fill-available overflow-x-hidden overflow-y-hidden bg-gray6-black flex justify-center items-center">
+          <Provider>
+            <ConditionalStyledBackground>
+              <TranslationsProvider
+                locale={locale}
+                namespaces={i18nNamespaces}
+                resources={resources}
+              >
+                <SideBar songsBySingerList={songsList} />
+              </TranslationsProvider>
+              <div className="absolute z-10 top-0  w-full min-h-full max-h-[calc(100%-68px)] overflow-y-auto">
+                {children}
+              </div>
+            </ConditionalStyledBackground>
+          </Provider>
+        </body>
+      </html>
+      <Analytics />
+    </>
   );
 }
