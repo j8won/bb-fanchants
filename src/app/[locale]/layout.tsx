@@ -58,7 +58,7 @@ export default async function RootLayout({
 
   return (
     <html lang={locale} dir={dir(locale)}>
-      <body className="w-screen min-h-screen md:webkit-fill-available overflow-x-hidden bg-gray6-black flex justify-center items-center">
+      <body className="w-screen min-h-screen md:webkit-fill-available overflow-x-hidden overflow-y-hidden bg-gray6-black flex justify-center items-center">
         <Provider>
           <ConditionalStyledBackground>
             <TranslationsProvider

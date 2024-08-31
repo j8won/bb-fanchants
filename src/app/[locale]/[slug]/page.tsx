@@ -16,7 +16,7 @@ export default async function Page({ params: { slug, locale } }: Params) {
   const { metadata, mdxSource } = await getSongBySlug(locale, slug);
 
   return (
-    <div className="px-5 pt-[68px] pb-20">
+    <div className="px-5 pt-[68px] pb-36">
       <div className="flex mt-4">
         <Link href={metadata.musicUrl} target="_blank" className="relative">
           <Image
