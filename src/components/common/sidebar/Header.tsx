@@ -8,7 +8,7 @@ export default function Header({ openMenu }: { openMenu: () => void }) {
   return (
     <>
       <header
-        className={`fixed z-20 w-full p-5 flex justify-between items-center ${!isRoot && 'bg-gray6-black'}`}
+        className={`fixed z-20 w-full max-w-screen-md p-5 flex justify-between items-center ${!isRoot && 'bg-gray6-black'}`}
       >
         <Link href="/">
           <Image
