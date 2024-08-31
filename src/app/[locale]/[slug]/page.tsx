@@ -15,9 +15,8 @@ interface Params {
 export default async function Page({ params: { slug, locale } }: Params) {
   const { metadata, mdxSource } = await getSongBySlug(locale, slug);
 
-  console.log(metadata);
   return (
-    <div className="overflow-y-auto px-5 pb-6">
+    <div className="px-5 pt-[68px] pb-20">
       <div className="flex mt-4">
         <Link href={metadata.musicUrl} target="_blank" className="relative">
           <Image
@@ -42,9 +41,11 @@ export default async function Page({ params: { slug, locale } }: Params) {
           <p>{new Date(metadata.date).toLocaleDateString()}</p>
         </div>
       </div>
+
       <div className="mt-6 mb-4 p-4 rounded bg-gray5-light-bg">
         <Notice locale={locale} />
       </div>
+
       <Markdown source={mdxSource} />
     </div>
   );

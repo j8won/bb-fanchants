@@ -68,7 +68,7 @@ export default async function RootLayout({
             >
               <SideBar songsBySingerList={songsList} />
             </TranslationsProvider>
-            <div className="absolute z-10 top-0 pt-[68px] w-full min-h-full max-h-[calc(100%-68px)] overflow-y-auto">
+            <div className="absolute z-10 top-0  w-full min-h-full max-h-[calc(100%-68px)] overflow-y-auto">
               {children}
             </div>
           </ConditionalStyledBackground>
