@@ -18,7 +18,7 @@ export default function SideBar({ songsBySingerList }: Props) {
     <>
       <Header openMenu={openMenu} />
       <aside
-        className={`absolute z-20 top-0 left-0 w-full h-screen bg-gray6-black ease-in-out duration-700 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+        className={`absolute z-20 top-0 left-0  w-full h-screen bg-gray6-black ease-in-out duration-700 ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
       >
         <MenuHeader closeMenu={closeMenu} />
         <Menu songsBySingerList={songsBySingerList} closeMenu={closeMenu} />
