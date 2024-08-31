@@ -9,7 +9,7 @@ interface Params {
 
 export default function Menu({ songsBySingerList, closeMenu }: Params) {
   return (
-    <div className="relative t-[68px] overflow-y-auto">
+    <div className="relative t-[68px] pb-36 overflow-y-auto">
       {songsBySingerList.map(({ singer, songs }) => (
         <div key={singer} className="px-5 pb-2">
           <p className="py-2 text-body-lg font-light text-gray4-dark-text">
