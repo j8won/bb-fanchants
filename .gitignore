@@ -3,8 +3,6 @@
 # webstorm
 /.idea
 
-# locales
-/locales
 
 # dependencies
 /node_modules
