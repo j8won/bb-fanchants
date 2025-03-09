@@ -13,11 +13,7 @@ interface Params {
   };
 }
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Params;
-}): Promise<Metadata> {
+export async function generateMetadata({ params }: Params): Promise<Metadata> {
   const { slug, locale } = params;
   const { metadata } = await getSongBySlug(locale, slug);
 
