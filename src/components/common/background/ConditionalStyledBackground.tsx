@@ -1,8 +1,12 @@
 'use client';
 import React from 'react';
-import TwinkleStars from '@/components/common/background/TwinkleStars';
 import useIsRoot from '@/hooks/useIsRoot';
+import dynamic from 'next/dynamic';
 
+const DynamicTwinkleStars = dynamic(
+  () => import('@/components/common/background/TwinkleStars'),
+  { ssr: false }
+);
 export default function ConditionalStyledBackground({
   children,
 }: {
@@ -14,7 +18,7 @@ export default function ConditionalStyledBackground({
       className={`fixed overflow-x-hidden ${isRoot ? ' bg-custom-gradient overflow-y-hidden ' : ' bg-gray6-black '} w-screen max-w-screen-md h-screen`}
     >
       {children}
-      {isRoot && <TwinkleStars />}
+      {isRoot && <DynamicTwinkleStars />}
     </div>
   );
 }

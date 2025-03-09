@@ -1,14 +1,24 @@
-import { LocaleType } from '@/lib/constants/LOCALE';
+import { LocaleType, METADATA } from '@/lib/constants/LOCALE';
 import { getSongBySlug } from '@/lib/utils/mdx';
 import Markdown from '@/components/songs/Markdown';
 import Image from 'next/image';
 import Link from 'next/link';
 import Notice from '@/components/songs/Notice';
+import { Metadata } from 'next';
 
 interface Params {
   params: {
     slug: string;
     locale: LocaleType;
+  };
+}
+
+export async function generateMetadata({ params }: Params): Promise<Metadata> {
+  const { slug, locale } = params;
+  const { metadata } = await getSongBySlug(locale, slug);
+
+  return {
+    title: `${metadata?.title} 🌟 ${metadata?.artist} | ${METADATA[locale].title}`,
   };
 }
 

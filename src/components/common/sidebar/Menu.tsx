@@ -12,7 +12,7 @@ export default function Menu({ songsBySingerList, closeMenu }: Params) {
     <div className="absolute w-screen h-screen pt-[68px] pb-36 overflow-y-auto">
       {songsBySingerList.map(({ singer, songs }) => (
         <div key={singer} className="px-5 pb-2">
-          <p className="py-2 text-body-lg font-light text-gray4-dark-text">
+          <p className="py-2 text-body-lg font-light text-primary-yellow opacity-50">
             {singer}
           </p>
           {songs.map(({ title, slug }: SongWithSlug) => (

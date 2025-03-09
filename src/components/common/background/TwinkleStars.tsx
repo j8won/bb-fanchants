@@ -1,3 +1,5 @@
+'use client';
+
 import CreateStars from '@/components/common/background/CreateStars';
 import { useEffect, useState } from 'react';
 
