@@ -37,6 +37,8 @@ export async function generateMetadata({
       description:
         'Enjoy the BIGBANG concert with fanchants | English is now available.',
       url: 'https://bb-fanchants.vercel.app',
+      siteName: 'BB fanchants',
+      type: 'website',
     },
   };
 }
@@ -60,6 +62,18 @@ export default async function RootLayout({
   return (
     <>
       <html lang={locale} dir={dir(locale)}>
+        <head>
+          <link
+            rel="alternate"
+            hrefLang="en"
+            href="https://bb-fanchants.vercel.app/en"
+          />
+          <link
+            rel="alternate"
+            hrefLang="ko"
+            href="https://bb-fanchants.vercel.app"
+          />
+        </head>
         <body className="w-screen min-h-screen md:webkit-fill-available overflow-x-hidden overflow-y-hidden bg-gray6-black flex justify-center items-center">
           <Provider>
             <ConditionalStyledBackground>
